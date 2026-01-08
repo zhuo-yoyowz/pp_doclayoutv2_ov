@@ -15,23 +15,19 @@ This project provides a complete implementation for running PP-DocLayoutV2 docum
 - ✅ Automatic saving of detection results (JSON and visualization images)
 - ✅ Support for 25 types of document layout element detection
 
-## 🔧 Requirements
-
-- Python >= 3.7
-- OpenVINO >= 2023.0
-- OpenCV (cv2)
-- NumPy
-- PIL (Pillow)
-
 ## 📦 Installation
 
 ```bash
-# Install OpenVINO
-pip install openvino
-
-# Install other dependencies
-pip install opencv-python numpy pillow
+pip install -r requirements.txt
 ```
+
+## 📥 Model Download
+
+The OpenVINO IR model files can be downloaded from ModelScope:
+
+**Model Location:** [PP-DocLayoutV2-ov on ModelScope](https://www.modelscope.cn/models/zhaohb/PP-DocLayoutV2-ov/summary)
+
+After downloading, get model files (`.xml` and `.bin`) and specify the path to the `.xml` file using the `--model_path` parameter.
 
 ## 🚀 Quick Start
 
@@ -149,27 +145,6 @@ print(f"Detected {len(result.boxes)} layout elements")
 for box in result.boxes:
     print(f"{box['label']}: {box['score']:.3f} at {box['coordinate']}")
 ```
-
-## 🛠️ Technical Details
-
-### Preprocessing Pipeline
-
-1. BGR → RGB conversion
-2. Resize to 800×800 (using INTER_CUBIC interpolation)
-3. Normalize to [0, 1] (divide by 255.0)
-4. HWC → CHW transpose
-5. Add batch dimension
-
-### Post-processing Pipeline
-
-1. Output format conversion (handle DETR format output)
-2. Threshold filtering
-3. NMS (Non-Maximum Suppression)
-4. Large image filtering
-5. Layout box merging (optional)
-6. Ordered detection sorting
-7. Coordinate expansion (unclip, optional)
-8. Format output
 
 ## 📄 License
 

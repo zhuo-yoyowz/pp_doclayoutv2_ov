@@ -58,7 +58,7 @@ python ov_infer.py \
 | `--model_path` | str | ✅ | - | OpenVINO IR model path (.xml file) |
 | `--image_path` | str | ✅ | - | Input image path |
 | `--output_dir` | str | ❌ | `./output_ov` | Output directory |
-| `--device` | str | ❌ | `GPU` | Inference device: `CPU`, `GPU`, `AUTO` |
+| `--device` | str | ❌ | `GPU` | Inference device: `CPU`, `GPU`, `NPU`, `AUTO` |
 | `--threshold` | float | ❌ | `0.5` | Detection confidence threshold |
 
 ## 📊 Supported Layout Elements
